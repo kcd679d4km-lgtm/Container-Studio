@@ -1,0 +1,46 @@
+name: ContainerStudio
+options:
+  bundleIdPrefix: com.containerstudio
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "26.0"
+    TARGETED_DEVICE_FAMILY: "1"
+    SUPPORTS_MACCATALYST: NO
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+
+targets:
+  ContainerStudio:
+    type: application
+    platform: iOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: ContainerStudio
+        excludes:
+          - "Resources/Info.plist"
+          - "Resources/ContainerStudio.entitlements"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.containerstudio.app
+        PRODUCT_NAME: ContainerStudio
+        INFOPLIST_FILE: ContainerStudio/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: ContainerStudio/Resources/ContainerStudio.entitlements
+        SWIFT_OBJC_BRIDGING_HEADER: ContainerStudio/Core/Bridge/ContainerStudio-Bridging-Header.h
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CLANG_ENABLE_MODULES: YES
+        LD_RUNPATH_SEARCH_PATHS:
+          - "$(inherited)"
+          - "@executable_path/Frameworks"
+    entitlements:
+      path: ContainerStudio/Resources/ContainerStudio.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.containerstudio.app
+    scheme:
+      gatherCoverageData: false
