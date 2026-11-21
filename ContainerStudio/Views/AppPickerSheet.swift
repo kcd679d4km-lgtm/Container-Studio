@@ -74,7 +74,7 @@ struct AppPickerSheet: View {
                                 HStack(spacing: 12) {
                                     Image(systemName: app.isSystemApp ? "gear.circle.fill" : "app.fill")
                                         .font(.title2)
-                                        .foregroundStyle(app.isSystemApp ? .secondary : .orange)
+                                        .foregroundStyle(app.isSystemApp ? AnyShapeStyle(.secondary) : AnyShapeStyle(.orange))
                                         .frame(width: 32)
 
                                     VStack(alignment: .leading, spacing: 3) {

@@ -23,7 +23,7 @@ struct HomeView: View {
                                 .fill(provider.isProviderReady ? Color.green : Color.red)
                                 .frame(width: 8, height: 8)
                             Text(provider.statusDescription)
-                                .foregroundStyle(provider.isProviderReady ? .primary : .red)
+                                .foregroundStyle(provider.isProviderReady ? AnyShapeStyle(.primary) : AnyShapeStyle(.red))
                         }
                     }
                 } header: {
