@@ -6,8 +6,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#include <sys/fsgetpath.h>
 #include <sys/mount.h>
+#if __has_include(<sys/fsgetpath.h>)
+#include <sys/fsgetpath.h>
+#else
+extern ssize_t fsgetpath(void *buf, size_t bufsize, fsid_t *fsid, uint64_t objid);
+#endif
 #include "pathleak.h"
 
 NSArray<NSString *> * _Nullable pathleak(NSString *path, uint64_t max_inode) {

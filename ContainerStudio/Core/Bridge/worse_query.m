@@ -8,7 +8,12 @@
 #import <Foundation/Foundation.h>
 #include <dlfcn.h>
 #include <stdlib.h>
+#if __has_include(<xpc/xpc.h>)
 #include <xpc/xpc.h>
+#else
+typedef void *xpc_object_t;
+extern xpc_object_t xpc_string_create(const char *string);
+#endif
 #include <sys/stat.h>
 #include "worse_query.h"
 
